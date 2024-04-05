@@ -4,12 +4,11 @@ This project uses [Streamlit](https://streamlit.io/) to build examples that demo
 
 ## Install 
 
-Follow these steps to install and run this project. 
-
+Follow these steps to install and run this project on AWS using the AWS Cloud9 cloud-based integrated development environment (IDE). 
 
 ### Cloud9 Setup
 
-1. Create a new AWS [Cloud9](https://console.aws.amazon.com/cloud9control/home#/create) environment.
+1. Create a new [Cloud9](https://console.aws.amazon.com/cloud9control/home#/create) environment.
 
    - Name: ```gen-ai-demo```
    - EC2 Instance: ```m5.large``` (recommended)
@@ -55,6 +54,7 @@ pip3 install -r setup/requirements.txt -U
 cd app
 streamlit run Main_Menu.py --server.port 8080
 ```
+
 4. In Cloud9, go to the **Preview** menu and select **Preview Running Application**. A new tab in the Cloud9 IDE will open and load your running application.
 
 ## Customize
