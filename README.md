@@ -57,6 +57,14 @@ streamlit run Main_Menu.py --server.port 8080
 ```
 4. In Cloud9, go to the **Preview** menu and select **Preview Running Application**. A new tab in the Cloud9 IDE will open and load your running application.
 
+## Customize
+
+Once the app is up and running, you can begin to customize for your own use cases.
+
+1. Edit main entry page content in ```app/Main_Menu.py```.
+
+1. Add your own Streamlit apps to the ```app/pages``` directory and they will automatically be included in the app.
+
 ## Clean Up
 
 1. Delete the Cloud9 environment you created.
