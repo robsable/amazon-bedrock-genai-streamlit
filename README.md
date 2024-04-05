@@ -23,9 +23,15 @@ Follow these steps to install and run this project.
 
 1. (Optional) [Create an access key](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-iam-create-creds.html) for an IAM user with AdministratorAccess  if you don't already have one.
 
-1. Configure your credentials in the Cloud9 terminal.
+1. Configure your credentials in the Cloud9 terminal using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/configure/).
+
 ```
 aws configure
+
+AWS Access Key ID []: <ENTER YOUR ACCESS KEY ID>
+AWS Secret Access Key []: <ENTER YOUR SECRET ACCESS KEY>
+Default region name []: <ENTER YOUR DEFAULT AWS REGION>
+Default output format [None]: 
 ```
 
 ### Application Setup
@@ -50,3 +56,7 @@ cd app
 streamlit run Main_Menu.py --server.port 8080
 ```
 4. In Cloud9, go to the **Preview** menu and select **Preview Running Application**. A new tab in the Cloud9 IDE will open and load your running application.
+
+## Clean Up
+
+1. Delete the Cloud9 environment you created.
