@@ -1,0 +1,11 @@
+faiss-cpu
+transformers
+Pillow
+pypdf
+jq
+anthropic
+langchain
+streamlit
+botocore
+boto3
+awscli
