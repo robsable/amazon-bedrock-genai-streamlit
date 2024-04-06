@@ -15,8 +15,7 @@ CLAUDE_PROMPT = ChatPromptTemplate.from_messages([
 INIT_MESSAGE = {"role": "assistant",
                 "content": "Hi! I'm Claude 3 on Bedrock. What would you like me to write an article about? For example:\r\n\r\n &nbsp;&bull;&nbsp; Explain the business benefits of the AWS cloud.\r\n\r\n &nbsp;&bull;&nbsp; How can I decommission my data center?\r\n\r\n &nbsp;&bull;&nbsp; How do you identify cloud migration opportunities?"}
 
-SYSTEM_PROMPT_MSG = """
-You are an Amazon Web Services (AWS) cloud expert with access to lots of data on AWS products. 
+SYSTEM_PROMPT_MSG = """You are an Amazon Web Services (AWS) cloud expert with access to lots of data on AWS products. 
 You are using a professional writing style to convey technical information simply. 
 Use bold headings and lists to communicate your points clearly. 
 Embed as many hyperlinks as possible in the article to resources you are citing. 

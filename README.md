@@ -19,18 +19,12 @@ Follow these steps to install and run this project on AWS using the AWS Cloud9 c
 1. Toggle off AWS managed temporary credential in Cloud9 by going to **Preferences > AWS Settings > Credentials**
 
 1. Configure the AWS CLI with your permanent AWS credentials. You will need an ```AWS Access Key ID``` and ```AWS Secret Access Key``` for the next step.
+   - (Optional) [Create an access key](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-iam-create-creds.html) for an IAM user with AdministratorAccess  if you don't already have one.
 
-1. (Optional) [Create an access key](https://docs.aws.amazon.com/cli/latest/userguide/cli-services-iam-create-creds.html) for an IAM user with AdministratorAccess  if you don't already have one.
-
-1. Configure your credentials in the Cloud9 terminal using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/configure/).
+1. Configure your AWS credentials and region in the Cloud9 terminal using the [AWS CLI](https://docs.aws.amazon.com/cli/latest/reference/configure/).
 
 ```
 aws configure
-
-AWS Access Key ID []: <ENTER YOUR ACCESS KEY ID>
-AWS Secret Access Key []: <ENTER YOUR SECRET ACCESS KEY>
-Default region name []: <ENTER YOUR DEFAULT AWS REGION>
-Default output format [None]: 
 ```
 
 ### Application Setup
