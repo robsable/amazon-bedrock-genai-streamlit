@@ -34,6 +34,7 @@ st.page_link("pages/4_Document_FAQ_Generator.py",
 "Use PDF documents to generate a list of expected customer questions and their answers."
 "---"
 
-
-# 💬 Claude 3 Bedrock Chatbot
-# Have a text and image-based conversation with a Claude 3 chatbot.
+st.page_link("pages/5_Claude_3_Chatbot.py", 
+    icon="💬", label="**Claude 3 Chatbot**")
+"Have a text and image-based conversation with a Claude 3 chatbot."
+"---"
