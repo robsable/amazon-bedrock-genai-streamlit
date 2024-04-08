@@ -32,8 +32,10 @@ class StreamHandler(BaseCallbackHandler):
         self.text += token
         self.container.markdown(self.text)
 
-# Set Streamlit page configuration
-st.set_page_config(page_title="Write a blog post", layout="wide", page_icon="📝")
+#################
+# Streamlit App #
+#################
+st.set_page_config(page_title="Write a blog post", layout="wide", page_icon=":memo:")
 
 model_map = {
     "Sonnet": "anthropic.claude-3-sonnet-20240229-v1:0",

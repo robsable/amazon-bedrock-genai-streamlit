@@ -3,13 +3,13 @@ import boto3
 import json
 import base64
 from io import BytesIO
-
+from datetime import datetime, timezone, timedelta
+from pages.lib import models_shared
 
 #get a BytesIO object from file bytes
 def get_bytesio_from_bytes(image_bytes):
     image_io = BytesIO(image_bytes)
     return image_io
-
 
 #get a base64-encoded string from file bytes
 def get_base64_from_bytes(image_bytes):
@@ -17,13 +17,11 @@ def get_base64_from_bytes(image_bytes):
     img_str = base64.b64encode(resized_io.getvalue()).decode("utf-8")
     return img_str
 
-
 #load the bytes from a file on disk
 def get_bytes_from_file(file_path):
     with open(file_path, "rb") as image_file:
         file_bytes = image_file.read()
     return file_bytes
-
 
 #get the stringified request body for the InvokeModel API call
 def get_image_understanding_request_body(prompt, image_bytes=None, mask_prompt=None, negative_prompt=None):
@@ -56,26 +54,20 @@ def get_image_understanding_request_body(prompt, image_bytes=None, mask_prompt=N
     
     return json.dumps(body)
 
-
-
 #generate a response using Anthropic Claude
-def get_response_from_model(prompt_content, image_bytes, mask_prompt=None):
+def get_response_from_model(model_id, prompt_content, image_bytes, mask_prompt=None):
     session = boto3.Session()
-    
     bedrock = session.client(service_name='bedrock-runtime') #creates a Bedrock client
-    
     body = get_image_understanding_request_body(prompt_content, image_bytes, mask_prompt=mask_prompt)
-    
-    response = bedrock.invoke_model(body=body, modelId="anthropic.claude-3-sonnet-20240229-v1:0", contentType="application/json", accept="application/json")
-    
+    response = bedrock.invoke_model(body=body, modelId=model_id, contentType="application/json", accept="application/json")
     response_body = json.loads(response.get('body').read()) # read the response
-    
     output = response_body['content'][0]['text']
-    
     return output
 
-st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon="⚙️")
-
+#################
+# Streamlit App #
+#################
+st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon=":gear:")
 st.title("Product Content Generator")
 st.caption("**Instructions:**  (1) Select an image  (2) Choose a prompt template  (3) Customize your prompt  (4) Click Generate")
 
@@ -100,6 +92,8 @@ image_options_dict = {
 
 image_options = list(image_options_dict)
 
+# Get Bedrock LLM Models options
+model_options = list(models_shared.vision_model_options_dict)
 
 with col1:
 
@@ -131,6 +125,12 @@ with col3:
         help="What you want to know about the image.",
         label_visibility="collapsed")
     
+    selected_model = st.radio("**Select a model:**", 
+        model_options,
+        format_func=models_shared.get_vision_model_label,
+        horizontal=True
+    )
+    
     go_button = st.button("Generate", type="primary")
     
 
@@ -141,13 +141,22 @@ if go_button:
             image_bytes = uploaded_file.getvalue()
         else:
             image_bytes = get_bytes_from_file(image_options_dict[image_selection])
+
+        timezone_offset = -4.0  # Eastern Standard Time (UTC−08:00)
+        tzinfo = timezone(timedelta(hours=timezone_offset))
+
+        start = datetime.now(tzinfo)
         
         response = get_response_from_model(
+            model_id=selected_model,
             prompt_content=prompt_text, 
             image_bytes=image_bytes,
         )
     
+        end = datetime.now(tzinfo)
+
     st.divider()
     st.subheader("Results")
+    st.write("**TIME TO GENERATE** = " + str(end - start))
     st.write(response)
 
