@@ -2,6 +2,8 @@
 
 This project uses [Streamlit](https://streamlit.io/) to build example generative AI applications on AWS with [Amazon Bedrock](https://aws.amazon.com/bedrock/).
 
+<p align="center"><img src="./docs/app-screenshot.png" alt="Amazon Bedrock Generative AI Demo App Screenshot"/></p>
+
 - **Product Metadata Generator**: 
 Use product images to generate product descriptions, feature lists, and meta tag code for Open Graph, schema.org, and more...
 - **Product Review Summarizer**: 
