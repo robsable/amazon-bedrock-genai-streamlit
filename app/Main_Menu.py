@@ -21,7 +21,6 @@ with col1:
     ""
     st.page_link("pages/Document_FAQ_Generator.py", icon="⁉️", label="**Document FAQ Generator**")
     "Use PDF documents to generate a list of expected customer questions and their answers."
-    ""
 
 with col2:
     st.page_link("pages/Product_Blog_Writer.py", icon="📝️", label="**Product Blog Writer**")
@@ -30,4 +29,3 @@ with col2:
 
     st.page_link("pages/Claude_3_Chatbot.py", icon="💬", label="**Claude 3 Chatbot**")
     "Have a text and image-based conversation with a Claude 3 chatbot."
-    ""

@@ -25,12 +25,12 @@ def get_bytes_from_file(file_path):
     return file_bytes
 
 #get the stringified request body for the InvokeModel API call
-def get_image_understanding_request_body(prompt, image_bytes=None, mask_prompt=None, negative_prompt=None):
+def get_request_body(prompt, image_bytes=None, mask_prompt=None, negative_prompt=None):
     input_image_base64 = get_base64_from_bytes(image_bytes)
     
     body = {
         "anthropic_version": "bedrock-2023-05-31",
-        "max_tokens": 2000,
+        "max_tokens": 4000,
         "temperature": 0,
         "messages": [
             {
@@ -59,7 +59,7 @@ def get_image_understanding_request_body(prompt, image_bytes=None, mask_prompt=N
 def get_response_from_model(model_id, prompt_content, image_bytes, mask_prompt=None):
     session = boto3.Session()
     bedrock = session.client(service_name='bedrock-runtime') #creates a Bedrock client
-    body = get_image_understanding_request_body(prompt_content, image_bytes, mask_prompt=mask_prompt)
+    body = get_request_body(prompt_content, image_bytes, mask_prompt=mask_prompt)
     response = bedrock.invoke_model(body=body, modelId=model_id, contentType="application/json", accept="application/json")
     response_body = json.loads(response.get('body').read()) # read the response
     output = response_body['content'][0]['text']
