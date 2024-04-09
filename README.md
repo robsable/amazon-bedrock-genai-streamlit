@@ -68,7 +68,9 @@ Once the app is up and running, you can begin to customize for your own use case
 
 1. Edit main entry page content for the app in ```app/Main_Menu.py```.
 
-1. Add your own Streamlit scripts to the ```app/pages``` directory and they will automatically be included in the main menu.
+1. Add your own Streamlit scripts to the ```app/pages``` directory.
+
+1. Edit main menu items and layout in ```app/.streamlit/pages.toml```.
 
 ## Clean Up
 
