@@ -1,4 +1,5 @@
 import streamlit as st
+from st_pages import add_indentation
 from langchain_community.chat_models import BedrockChat
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferWindowMemory
@@ -36,6 +37,7 @@ class StreamHandler(BaseCallbackHandler):
 # Streamlit App #
 #################
 st.set_page_config(page_title="Write a blog post", layout="wide", page_icon=":memo:")
+add_indentation()
 
 model_map = {
     "Sonnet": "anthropic.claude-3-sonnet-20240229-v1:0",

@@ -1,0 +1,11 @@
+[server]
+port = 8080
+runOnSave = true
+enableStaticServing = true
+
+[theme]
+primaryColor="#2074d5"
+backgroundColor="#FFFFFF"
+secondaryBackgroundColor="#F1F3F3"
+textColor="#232F3E"
+font="sans serif"

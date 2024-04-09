@@ -4,6 +4,7 @@ from io import BytesIO
 from typing import List, Tuple, Union
 
 import streamlit as st
+from st_pages import add_indentation
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
 from langchain_community.chat_models import BedrockChat
 from langchain_core.messages import AIMessage, HumanMessage
@@ -247,6 +248,7 @@ def main() -> None:
     Main function to run the Streamlit app.
     """
     set_page_config()
+    add_indentation()
 
     # Generate a unique widget key only once
     if "widget_key" not in st.session_state:

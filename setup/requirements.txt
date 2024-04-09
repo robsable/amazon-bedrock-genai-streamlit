@@ -6,6 +6,7 @@ jq
 anthropic
 langchain
 streamlit
+st-pages
 botocore
 boto3
 awscli

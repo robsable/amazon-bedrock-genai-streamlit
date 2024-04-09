@@ -1,39 +1,20 @@
 import streamlit as st
+from st_pages import add_indentation
 from datetime import datetime, timezone, timedelta
 
 from langchain.prompts import PromptTemplate
-from langchain_community.llms import Bedrock
 from langchain.chains.summarize import load_summarize_chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
 from pages.lib import models_shared
 
-# def get_llm():
-    
-#     model_kwargs = { #AI21
-#         "maxTokens": 8000, 
-#         "temperature": 0, 
-#         "topP": 0.5, 
-#         "stopSequences": [], 
-#         "countPenalty": {"scale": 0 }, 
-#         "presencePenalty": {"scale": 0 }, 
-#         "frequencyPenalty": {"scale": 0 } 
-#     }
-    
-#     llm = Bedrock(
-#         region_name="us-west-2",
-#         model_id="ai21.j2-ultra-v1", #set the foundation model
-#         model_kwargs=model_kwargs) #configure the properties for Claude
-    
-#     return llm
-
 def get_docs(doc_selection):
     
     loader = PyPDFLoader(file_path=doc_selection)
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(
-        separators=["\n\n", "\n", ".", " "], chunk_size=4000, chunk_overlap=0 
+        separators=["\n\n", "\n", ".", " "], chunk_size=10000, chunk_overlap=0 
     )
     docs = text_splitter.split_documents(documents=documents)
     
@@ -58,9 +39,10 @@ def get_summary(model_id=None, temperature=0.0, return_intermediate_steps=False,
 #################
 # Streamlit App #
 #################
-st.set_page_config(layout="wide", page_title="Product Summary & FAQs", page_icon=":interrobang:")
-st.title("Product Summary & FAQs")
-st.caption("**Instructions:**  (1) Select a document  (2) Click Generate")
+st.set_page_config(layout="wide", page_title="Document Summary & FAQs", page_icon=":interrobang:")
+st.title("Document Summary & FAQs")
+st.caption("**Instructions:**  (1) Select a document  (2) Select a model (3) Click Generate")
+add_indentation()
 
 # Get Bedrock LLM Models options
 model_options = list(models_shared.model_options_dict)
@@ -68,22 +50,25 @@ model_options = list(models_shared.model_options_dict)
 timezone_offset = -4.0  # Eastern Standard Time (UTC−08:00)
 tzinfo = timezone(timedelta(hours=timezone_offset))
 
-col1, col2 = st.columns([.25,.75])
+col1, col2 = st.columns([.35,.65])
 
 pdf_options_dict = {
-    "./pages/data/beginners-guide.pdf" : "AWS Beginners Guide",
-    "./pages/data/awsgsg-intro.pdf" : "AWS Intro",
+    "./static/beginners-guide.pdf" : "AWS Beginners Guide",
+    "./static/awsgsg-intro.pdf" : "AWS Intro",
 }
 pdf_options = list(pdf_options_dict)
 
-doc_selection = st.radio("**Select a Document:**", pdf_options, format_func=pdf_options_dict.get, horizontal=True)
-return_intermediate_steps = st.checkbox("Generate FAQs", value=True)
-selected_model = st.radio("**Select a model:**", 
-    model_options,
-    format_func=models_shared.get_model_label,
-    horizontal=True
-)
-summarize_button = st.button("Generate", type="primary")
+with col1:
+    doc_selection = st.radio("**Select a document:**", pdf_options, format_func=pdf_options_dict.get, horizontal=True)
+    return_intermediate_steps = st.checkbox("Generate FAQs", value=True)
+    summarize_button = st.button("Generate", type="primary")
+
+with col2:
+    selected_model = st.radio("**Select a model:**", 
+        model_options,
+        format_func=models_shared.get_model_label,
+        horizontal=True
+    )
 
 if summarize_button:
     st.subheader("Document summary")
