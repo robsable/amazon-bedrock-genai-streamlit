@@ -12,8 +12,8 @@ List the most common positive and negative comments from a set of consumer produ
 Generate a 750-1000 word blog post with a comma-separated list of related SEO keywords.
 - **Doument FAQ Generator**: 
 Use PDF documents to generate a list of expected customer questions and their answers.
-- **Claude 3 Chatbot**: 
-Have a text and image-based conversation with Claude 3.
+- **Product Assistant Chatbot**: 
+Have a text and image-based conversation with a Claude 3 chatbot.
 
 ## Install 
 
