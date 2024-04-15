@@ -47,8 +47,8 @@ def set_page_config() -> None:
     """
     Set the Streamlit page configuration.
     """
-    st.set_page_config(page_title="🤖 Chat with Bedrock", layout="wide", page_icon="💬")
-    st.title("🤖 Chat with Claude 3 on Bedrock")
+    st.set_page_config(page_title="🤖 Bedrock Product Assistant", layout="wide", page_icon="💬")
+    st.title("🤖 Claude 3 Bedrock Product Assistant")
 
 def get_sidebar_params() -> Tuple[float, float, int, int, int, str, str]:
     """
@@ -58,7 +58,7 @@ def get_sidebar_params() -> Tuple[float, float, int, int, int, str, str]:
         st.markdown("## Inference Parameters")
         system_prompt = st.text_area(
             "**System Prompt**", 
-            "You're a cool assistant who loves to respond with a lot of emojis.",
+            "You're a virtual product assistant who loves to help people find products they'll love. Your job is to determine what product a person is looking for and tell them where they can buy it. Respond with specific name brands and store names.",
             key=f"{st.session_state['widget_key']}_System_Prompt",
         )
         model_id_select = st.selectbox(

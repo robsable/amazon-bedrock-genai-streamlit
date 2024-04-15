@@ -9,8 +9,8 @@ icon = ":lower_left_fountain_pen:"
 is_section = true
 
 [[pages]]
-path = "./pages/Product_Metadata_Generator.py"
-name = "Product Metadata Generator"
+path = "./pages/Product_Content_Generator.py"
+name = "Product Content Generator"
 icon = "⚙️"
 
 [[pages]]
@@ -34,7 +34,7 @@ icon = ":robot_face:"
 is_section = true
 
 [[pages]]
-path = "pages/Claude_3_Chatbot.py"
-name = "Claude 3 Chatbot"
+path = "pages/Product_Assistant_Chat.py"
+name = "Product Assistant Chatbot"
 icon = "💬"
 

@@ -1,6 +1,6 @@
-# Amazon Bedrock Generative AI Demo Apps
+# Digital Marketing Generative AI Demo Apps
 
-This project uses [Streamlit](https://streamlit.io/) to build example generative AI applications on AWS with [Amazon Bedrock](https://aws.amazon.com/bedrock/).
+This project uses [Streamlit](https://streamlit.io/) to build example generative AI applications on AWS with [Amazon Bedrock](https://aws.amazon.com/bedrock/) focused on digital marketing use cases.
 
 <p align="center"><img src="./docs/app-screenshot.png" alt="Amazon Bedrock Generative AI Demo App Screenshot"/></p>
 
@@ -59,7 +59,7 @@ pip3 install -r setup/requirements.txt -U
 
 ```
 cd app
-streamlit run Main_Menu.py --server.port 8080
+streamlit run Main_Menu.py
 ```
 
 4. In Cloud9, go to the **Preview** menu and select **Preview Running Application**. A new tab in the Cloud9 IDE will open and load your running application.
