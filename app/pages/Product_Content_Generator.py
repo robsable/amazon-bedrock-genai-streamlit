@@ -70,7 +70,7 @@ def get_response_from_model(model_id, prompt_content, image_bytes, mask_prompt=N
 #################
 st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon=":gear:")
 add_indentation()
-st.title("Product Content Generator")
+st.title("Generate Product Content")
 st.caption("**Instructions:**  (1) Select an image  (2) Choose a prompt template  (3) Customize your prompt  (4) Click Generate")
 
 col1, col2, col3 = st.columns([.20,.20,.6])

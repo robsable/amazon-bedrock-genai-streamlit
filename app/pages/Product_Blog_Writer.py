@@ -36,7 +36,7 @@ class StreamHandler(BaseCallbackHandler):
 #################
 # Streamlit App #
 #################
-st.set_page_config(page_title="Write a blog post", layout="wide", page_icon=":memo:")
+st.set_page_config(page_title="Write a Product Blog", layout="wide", page_icon=":memo:")
 add_indentation()
 
 model_map = {
@@ -77,7 +77,7 @@ with st.sidebar:
             MEMORY_WINDOW = st.slider("**Memory Window**", min_value=0,
                                       max_value=10, value=0, step=1)
 
-st.title("Bedrock Claude 3 Blog Writer")
+st.title("Generate a Blog Post")
 st.caption("Model: " + MODEL_ID)
 
 # Initialize the ConversationChain

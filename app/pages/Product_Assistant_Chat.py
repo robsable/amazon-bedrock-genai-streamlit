@@ -48,7 +48,7 @@ def set_page_config() -> None:
     Set the Streamlit page configuration.
     """
     st.set_page_config(page_title="🤖 Bedrock Product Assistant", layout="wide", page_icon="💬")
-    st.title("🤖 Claude 3 Bedrock Product Assistant")
+    st.title("🤖 Chat with a Product Assistant")
 
 def get_sidebar_params() -> Tuple[float, float, int, int, int, str, str]:
     """

@@ -40,7 +40,7 @@ def get_summary(model_id=None, temperature=0.0, return_intermediate_steps=False,
 # Streamlit App #
 #################
 st.set_page_config(layout="wide", page_title="Document Summary & FAQs", page_icon=":interrobang:")
-st.title("Document Summary & FAQs")
+st.title("Generate Document FAQs")
 st.caption("**Instructions:**  (1) Select a document  (2) Select a model (3) Click Generate")
 add_indentation()
 
