@@ -5,6 +5,7 @@ pypdf
 jq
 anthropic
 langchain
+langchain-community
 streamlit
 st-pages
 botocore
