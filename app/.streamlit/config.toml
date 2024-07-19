@@ -3,6 +3,9 @@ port = 8080
 runOnSave = true
 enableStaticServing = true
 
+[browser]
+gatherUsageStats = false
+
 [theme]
 primaryColor="#2074d5"
 backgroundColor="#FFFFFF"
