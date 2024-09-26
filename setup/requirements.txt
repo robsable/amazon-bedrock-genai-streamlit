@@ -6,8 +6,8 @@ jq
 anthropic
 langchain
 langchain-community
+langchain-aws
 streamlit
-st-pages
 botocore
 boto3
 awscli

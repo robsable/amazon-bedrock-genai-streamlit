@@ -4,9 +4,9 @@ from io import BytesIO
 from typing import List, Tuple, Union
 
 import streamlit as st
-from st_pages import add_indentation
+
 from langchain_community.chat_message_histories import StreamlitChatMessageHistory
-from langchain_community.chat_models import BedrockChat
+from langchain_aws import ChatBedrock
 from langchain_core.messages import AIMessage, HumanMessage
 from langchain.callbacks.base import BaseCallbackHandler
 from langchain.chains import ConversationChain
@@ -148,7 +148,7 @@ def init_conversationchain(
     if system_prompt != "":
         model_kwargs["system"] = system_prompt
 
-    llm = BedrockChat(region_name="us-west-2",model_id=model_id, model_kwargs=model_kwargs, streaming=True)
+    llm = ChatBedrock(region_name="us-east-1",model_id=model_id, model_kwargs=model_kwargs, streaming=True)
 
     conversation = ConversationChain(
         llm=llm,
@@ -247,8 +247,7 @@ def main() -> None:
     """
     Main function to run the Streamlit app.
     """
-    set_page_config()
-    add_indentation()
+    # set_page_config()
 
     # Generate a unique widget key only once
     if "widget_key" not in st.session_state:

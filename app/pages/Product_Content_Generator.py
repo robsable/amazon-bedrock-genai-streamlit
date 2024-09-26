@@ -1,5 +1,4 @@
 import streamlit as st
-from st_pages import add_indentation
 import boto3
 import json
 import base64
@@ -69,11 +68,11 @@ def get_response_from_model(model_id, prompt_content, image_bytes, mask_prompt=N
 # Streamlit App #
 #################
 st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon=":gear:")
-add_indentation()
+
 st.title("Generate Product Content")
 st.caption("**Instructions:**  (1) Select an image  (2) Choose a prompt template  (3) Customize your prompt  (4) Click Generate")
 
-col1, col2, col3 = st.columns([.20,.20,.6])
+col1, col2 = st.columns([.3,.7])
 
 prompt_options_dict = {
     "Product Metadata" : "Generate\r\nA comma-separated list of at least 20 keywords and phrases.\r\nA set of Open Graph meta tags code.\r\nAn HTML meta keywords tag.\r\nGoogle schema.org product markup.\r\nImage alt text.\r\n\r\nSeparate each section with a horizontal rule",
@@ -89,7 +88,7 @@ image_options_dict = {
     "Insulation": "./static/insulation.jpg",
     "Red Boat": "./static/boat.jpg",
     "White Boat": "./static/boat2.jpg",
-    "Other": "./static/insulation.jpg",
+    "Other": "./static/blank.jpg",
 }
 
 image_options = list(image_options_dict)
@@ -106,8 +105,6 @@ with col1:
     else:
         uploaded_file = None
 
-with col2:
-
     if uploaded_file and image_selection == 'Other':
         uploaded_image_preview = get_bytesio_from_bytes(uploaded_file.getvalue())
         st.image(uploaded_image_preview, width=200)
@@ -115,7 +112,7 @@ with col2:
         st.image(image_options_dict[image_selection], width=200)
     
 
-with col3:
+with col2:
 
     prompt_selection = st.radio("**Choose a prompt template:**", prompt_options, horizontal=True)
     

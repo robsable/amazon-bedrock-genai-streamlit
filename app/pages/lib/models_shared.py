@@ -2,7 +2,7 @@
 # Shared Library of LLM/Bedrock functions used across Streamlit apps
 #
 from langchain_community.llms import Bedrock
-from langchain_community.chat_models import BedrockChat
+from langchain_aws import ChatBedrock
 
 vision_model_options_dict = {
     "anthropic.claude-3-sonnet-20240229-v1:0": "Claude 3 Sonnet",
@@ -38,7 +38,7 @@ def get_llm(model_id, temperature):
     bedrock_model_provider = model_id.split('.')[0] #grab the model provider from the first part of the model id
     
     if bedrock_model_provider == 'anthropic' or bedrock_model_provider == 'mistral' or bedrock_model_provider == 'meta' or bedrock_model_provider == 'amazon':
-        llm = BedrockChat(
+        llm = ChatBedrock(
             model_id=model_id, #set the foundation model
             model_kwargs=model_kwargs) #configure the properties for the LLM
         

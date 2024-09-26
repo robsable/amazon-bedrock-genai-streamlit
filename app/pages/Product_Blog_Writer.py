@@ -1,6 +1,6 @@
 import streamlit as st
-from st_pages import add_indentation
-from langchain_community.chat_models import BedrockChat
+# from st_pages import add_indentation
+from langchain_aws import ChatBedrock
 from langchain.chains import ConversationChain
 from langchain.memory import ConversationBufferWindowMemory
 from langchain.prompts.chat import ChatPromptTemplate, MessagesPlaceholder, HumanMessagePromptTemplate
@@ -36,8 +36,8 @@ class StreamHandler(BaseCallbackHandler):
 #################
 # Streamlit App #
 #################
-st.set_page_config(page_title="Write a Product Blog", layout="wide", page_icon=":memo:")
-add_indentation()
+# st.set_page_config(page_title="Write a Product Blog", layout="wide", page_icon=":memo:")
+# add_indentation()
 
 model_map = {
     "Sonnet": "anthropic.claude-3-sonnet-20240229-v1:0",
@@ -88,7 +88,7 @@ def init_conversationchain() -> ConversationChain:
                     'max_tokens': MAX_TOKENS,
                     'system': SYSTEM_PROMPT}
 
-    llm = BedrockChat(
+    llm = ChatBedrock(
         model_id=MODEL_ID,
         model_kwargs=model_kwargs,
         streaming=True

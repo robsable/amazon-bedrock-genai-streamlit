@@ -1,5 +1,4 @@
 import streamlit as st
-from st_pages import add_indentation
 from langchain.prompts import PromptTemplate
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
@@ -11,13 +10,17 @@ def read_file(file_name):
     return text
 
 def get_context_list():
-    return ["Insulation Reviews", "Blank"]  
+    return ["Cylinder Reviews - Target", "Cylinder Reviews - Walmart", "Blank"]  
 
 def get_context(lab):
     base_path = Path(__file__).parent
 
-    if lab == "Insulation Reviews":
-        return read_file(base_path / "../static/insulation-reviews.txt")
+    if lab == "Cylinder Reviews - Target":
+        return read_file(base_path / "../static/cylinder-tg-reviews.txt")
+    if lab == "Cylinder Reviews - Walmart":
+        return read_file(base_path / "../static/cylinder-wm-reviews.txt")
+    # elif lab == "Insulation Reviews":
+    #     return read_file(base_path / "../static/insulation-reviews.txt")
     elif lab == "Blank":
         return ""
 
@@ -51,12 +54,11 @@ def get_text_response(model_id, temperature, template, context=None, user_input=
 # Get Bedrock LLM Models options
 model_options = list(models_shared.model_options_dict)
 
-st.set_page_config(page_title="Summarize Product Reviews", layout="wide", page_icon=":open_book:")
-add_indentation()
+# st.set_page_config(page_title="Summarize Product Reviews", layout="wide", page_icon=":open_book:")
 st.title("Summarize Product Reviews")
 st.caption("**Instructions:**  (1) Select a context (2) Click Show context to see reviews data (3) Customize prompt text as needed (4) Select a model  (5) Click Generate")
 
-col1, col2 = st.columns([.25,.75])
+col1, col2, col3 = st.columns([.25,.50,.25])
 
 with col1:
     context_list = get_context_list()
@@ -72,15 +74,16 @@ with col1:
         context_text = st.text_area("**Enter context text:**", value=context_for_lab, height=200)
 
 with col2:
-    prompt_text = st.text_area("**Enter prompt text:**", value="{context}\r\n\r\nList the most common positive and negative comments.  What is the overall sentiment?", height=150)
+    prompt_text = st.text_area("**Enter prompt text:**", value="{context}\r\n\r\nList the most common positive and negative comments.  What is the overall sentiment? How many reviews did you did analyze?", height=150)
     
+    process_button = st.button("Generate", type="primary")
+
+with col3:
     selected_model = st.radio("**Select a model:**", 
         model_options,
         format_func=models_shared.get_model_label,
-        horizontal=True
+        horizontal=False
     )
-    
-    process_button = st.button("Generate", type="primary")
 
 if process_button:
     st.subheader("Summary")

@@ -1,5 +1,4 @@
 import streamlit as st
-from st_pages import add_indentation
 from datetime import datetime, timezone, timedelta
 
 from langchain.prompts import PromptTemplate
@@ -39,10 +38,9 @@ def get_summary(model_id=None, temperature=0.0, return_intermediate_steps=False,
 #################
 # Streamlit App #
 #################
-st.set_page_config(layout="wide", page_title="Document Summary & FAQs", page_icon=":interrobang:")
+# st.set_page_config(layout="wide", page_title="Document Summary & FAQs", page_icon=":interrobang:")
 st.title("Generate Document FAQs")
 st.caption("**Instructions:**  (1) Select a document  (2) Select a model (3) Click Generate")
-add_indentation()
 
 # Get Bedrock LLM Models options
 model_options = list(models_shared.model_options_dict)
