@@ -65,10 +65,8 @@ streamlit run Main_Menu.py
 
 Once the app is up and running, you can begin to customize for your own use cases.
 
-1. Edit main menu content for the app in ```app/Main_Menu.py```.
-
 1. Add your own Streamlit scripts to the ```app/demos``` directory.
 
-1. Edit main menu items in ```app/Main_Menu.py```.
+1. Edit main menu content for the app in ```app/Main_Menu.py```.
 
 1. Edit the home page in ```app/Home.py```.
