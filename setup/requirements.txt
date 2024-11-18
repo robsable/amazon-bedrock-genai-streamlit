@@ -11,3 +11,8 @@ streamlit
 botocore
 boto3
 awscli
+opensearch-py
+retrying
+pydantic
+watchdog
+PyPDF2
