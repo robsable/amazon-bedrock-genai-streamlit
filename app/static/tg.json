@@ -1,0 +1,13 @@
+{
+    "summary": "The Blackstone grill has received overwhelmingly positive reviews from customers, with many praising its performance, convenience, and value. Reviewers have used the grill for various purposes, including camping, tailgating, and backyard cooking. Some have noted that the grill is easy to use, clean, and maintain, while others have appreciated its portability and compact design. However, a few reviewers have mentioned that the grill can be prone to rust and that the propane tanks may not last as long as expected. Overall, the Blackstone grill seems to be a reliable and versatile cooking option that meets the needs of many outdoor enthusiasts.",
+    "overall_sentiment": "Positive",
+    "sentiment_confidence": 0.95,
+    "reviews_positive": 0.93,
+    "reviews_neutral": 0.04,
+    "reviews_negative": 0.03,
+    "action_items": [
+      "Improve rust resistance",
+      "Increase propane tank lifespan",
+      "Consider adding more features or accessories"
+    ]
+  }

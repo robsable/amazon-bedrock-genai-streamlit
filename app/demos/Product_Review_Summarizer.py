@@ -2,7 +2,7 @@ import streamlit as st
 from langchain.prompts import PromptTemplate
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
-from pages.lib import models_shared
+from utils import models_shared
 
 def read_file(file_name):
     with open(file_name, "r") as f:

@@ -6,7 +6,7 @@ from langchain.chains.summarize import load_summarize_chain
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.document_loaders import PyPDFLoader
 
-from pages.lib import models_shared
+from utils import models_shared
 
 def get_docs(doc_selection):
     

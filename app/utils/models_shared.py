@@ -5,27 +5,32 @@ from langchain_community.llms import Bedrock
 from langchain_aws import ChatBedrock
 
 vision_model_options_dict = {
-    "anthropic.claude-3-sonnet-20240229-v1:0": "Claude 3 Sonnet",
-    "anthropic.claude-3-haiku-20240307-v1:0" : "Claude 3 Haiku"
+    "us.anthropic.claude-3-5-sonnet-20240620-v1:0": "Claude 3.5 Sonnet",
+    "us.anthropic.claude-3-sonnet-20240229-v1:0": "Claude 3 Sonnet",
+    "us.anthropic.claude-3-opus-20240229-v1:0": "Claude 3 Opus",
+    "us.anthropic.claude-3-haiku-20240307-v1:0" : "Claude 3 Haiku"
 }
 
 def get_vision_model_label(model_id):
     return vision_model_options_dict[model_id]
 
 model_options_dict = {
-    "amazon.titan-text-express-v1": "Titan Text Express",
-    "amazon.titan-text-lite-v1": "Titan Text Lite",
+    # "amamazon.titan-text-premier-v1:0": "Titan Text Premier",
     "anthropic.claude-3-sonnet-20240229-v1:0": "Claude 3 Sonnet",
     "anthropic.claude-3-haiku-20240307-v1:0" : "Claude 3 Haiku",
-    "ai21.j2-ultra-v1": "Jurassic-2 Ultra",
-    "ai21.j2-mid-v1": "Jurassic-2 Mid",
-    "cohere.command-text-v14": "Command",
-    "cohere.command-light-text-v14": "Command Light",
+    # "ai21.jamba-1-5-large-v1:0": "Jamba 1.5 Large",
+    # "ai21.jamba-1-5-mini-v1:0": "Jamba 1.5 Mini",
+    # "ai21.j2-ultra-v1": "Jurassic-2 Ultra",
+    # "ai21.j2-mid-v1": "Jurassic-2 Mid",
+    # "cohere.command-text-v14": "Command",
+    # "cohere.command-light-text-v14": "Command Light",
     "meta.llama2-70b-chat-v1": "Llama 2 Chat 70B",
     "meta.llama2-13b-chat-v1": "Llama 2 Chat 13B",
-    "mistral.mistral-7b-instruct-v0:2": "Mixtral 7B Instruct",
-    "mistral.mixtral-8x7b-instruct-v0:1": "Mixtral 8X7B Instruct",
-    "mistral.mistral-large-2402-v1:0" : "Mixtral Large"
+    "amazon.titan-text-lite-v1": "Titan Text G1 Lite",
+    "amazon.titan-text-express-v1": "Titan Text G1 Express",
+    # "mistral.mistral-7b-instruct-v0:2": "Mixtral 7B Instruct",
+    # "mistral.mixtral-8x7b-instruct-v0:1": "Mixtral 8X7B Instruct",
+    # "mistral.mistral-large-2402-v1:0" : "Mixtral Large"
 }
 
 def get_model_label(model_id):
