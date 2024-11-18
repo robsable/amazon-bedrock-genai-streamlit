@@ -15,19 +15,25 @@ def get_vision_model_label(model_id):
     return vision_model_options_dict[model_id]
 
 model_options_dict = {
-    # "amamazon.titan-text-premier-v1:0": "Titan Text Premier",
+    "anthropic.claude-3-5-sonnet-20240620-v1:0" : "Claude 3.5 Sonnet",
     "anthropic.claude-3-sonnet-20240229-v1:0": "Claude 3 Sonnet",
     "anthropic.claude-3-haiku-20240307-v1:0" : "Claude 3 Haiku",
+    "anthropic.claude-3-opus-20240229-v1:0": "Claude 3 Opus",
+    "amazon.titan-text-premier-v1:0": "Titan Text Premier",    
+    "amazon.titan-text-express-v1": "Titan Text G1 Express",    
+    "amazon.titan-text-lite-v1": "Titan Text G1 Lite",
+    "meta.llama3-70b-instruct-v1:0": "Llama 3 70B Instruct",
+    "meta.llama3-8b-instruct-v1:0": "Llama 3 8B Instruct",
+    # "anthropic.claude-v2:1": "Claude 2.1",
+    # "anthropic.claude-v2": "Claude 2.0",
+    # "anthropic.claude-instant-v1": "Claude Instant 1.2",
     # "ai21.jamba-1-5-large-v1:0": "Jamba 1.5 Large",
     # "ai21.jamba-1-5-mini-v1:0": "Jamba 1.5 Mini",
     # "ai21.j2-ultra-v1": "Jurassic-2 Ultra",
     # "ai21.j2-mid-v1": "Jurassic-2 Mid",
     # "cohere.command-text-v14": "Command",
     # "cohere.command-light-text-v14": "Command Light",
-    "meta.llama2-70b-chat-v1": "Llama 2 Chat 70B",
-    "meta.llama2-13b-chat-v1": "Llama 2 Chat 13B",
-    "amazon.titan-text-lite-v1": "Titan Text G1 Lite",
-    "amazon.titan-text-express-v1": "Titan Text G1 Express",
+
     # "mistral.mistral-7b-instruct-v0:2": "Mixtral 7B Instruct",
     # "mistral.mixtral-8x7b-instruct-v0:1": "Mixtral 8X7B Instruct",
     # "mistral.mistral-large-2402-v1:0" : "Mixtral Large"
@@ -109,7 +115,7 @@ def get_inference_parameters(model_id, temperature): #return a default set of pa
         #For the LangChain Bedrock implementation, these parameters will be added to the 
         #textGenerationConfig item that LangChain creates for us
         return { 
-            "maxTokenCount": 4000, 
+            "maxTokenCount": 3072, 
             "stopSequences": [], 
             "temperature": temperature, 
             "topP": 0.9 
