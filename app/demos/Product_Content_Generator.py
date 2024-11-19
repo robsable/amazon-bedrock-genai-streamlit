@@ -16,7 +16,7 @@ model_options = list(models_shared.model_options_dict)
 st.set_page_config(layout="wide", page_title="Product FAQ Writer", page_icon="❓")
 
 st.title("Product Content Generator")
-st.caption("**Instructions:**  (1) Upoad PDF files  (2) Customize the system prompt  (3) Customize the user prompt  (4) Click Generate")
+st.caption("**Instructions:**  (1) Choose / customize the system prompt (2) Upoad PDF files (3) Select a model (4) Choose / customize the user prompt  (45 Click Generate")
 
 # Create a Bedrock Runtime client
 @st.cache_resource
@@ -147,16 +147,13 @@ with st.sidebar:
         TOP_P = st.slider("**Top-P** [Focused <---> Diverse]", min_value=0.0,
                             max_value=1.0, value=0.5, step=0.01)
 
-    # Add some information about the app
-    st.header("About This App")
-    st.info(
-        "This Streamlit app uses the AWS Bedrock Runtime to communicate with LLM models. "
-        "Upload PDF files to provide context. "
-    )
-
 col1, col2, col3 = st.columns([.40,.40,.20])
 
 with col1:
+    # File uploader for PDFs
+    uploaded_files = st.file_uploader("**Upload PDF files for context:**", type="pdf", accept_multiple_files=True)
+
+with col2:
     # System Prompt
     system_prompt_selection = st.radio("**Choose a system prompt template:**", system_prompt_options, horizontal=True)
     system_prompt = system_prompt_options_dict[system_prompt_selection]
@@ -166,10 +163,6 @@ with col1:
         value=system_prompt,
         label_visibility="collapsed"
     )
-
-with col2:
-    # File uploader for PDFs
-    uploaded_files = st.file_uploader("**Upload PDF files for context**", type="pdf", accept_multiple_files=True)
 
 with col3:
     selected_model = st.radio("**Select a model:**", 
@@ -196,7 +189,7 @@ if pdf_texts:
             st.write(text)
 
 # User input
-user_prompt_selection = st.radio("**Choose a prompt template:**", user_prompt_options, horizontal=True)
+user_prompt_selection = st.radio("**Choose a user prompt template:**", user_prompt_options, horizontal=True)
 user_prompt = user_prompt_options_dict[user_prompt_selection]
 user_prompt = st.text_area(
     "Prompt",
@@ -223,7 +216,6 @@ if gen_button:
 
     timezone_offset = -4.0  # Eastern Standard Time (UTC−08:00)
     tzinfo = timezone(timedelta(hours=timezone_offset))
-
     start = datetime.now(tzinfo)
 
     try:
