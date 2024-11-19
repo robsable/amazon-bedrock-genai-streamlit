@@ -67,9 +67,9 @@ def get_response_from_model(model_id, prompt_content, image_bytes, mask_prompt=N
 #################
 # Streamlit App #
 #################
-st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon=":gear:")
+st.set_page_config(layout="wide", page_title="Product Image Reader", page_icon="📸")
 
-st.title("Generate Product Content")
+st.title("Product Image Reader")
 st.caption("**Instructions:**  (1) Select an image  (2) Choose a prompt template  (3) Customize your prompt  (4) Click Generate")
 
 col1, col2 = st.columns([.3,.7])

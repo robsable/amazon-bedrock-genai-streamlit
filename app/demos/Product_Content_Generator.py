@@ -13,10 +13,10 @@ from utils import models_shared
 # Get Bedrock LLM Models options
 model_options = list(models_shared.model_options_dict)
 
-st.set_page_config(layout="wide", page_title="Product FAQ Writer", page_icon="❓")
+st.set_page_config(layout="wide", page_title="Product Content Generator", page_icon="❓")
 
 st.title("Product Content Generator")
-st.caption("**Instructions:**  (1) Choose / customize the system prompt (2) Upoad PDF files (3) Select a model (4) Choose / customize the user prompt  (45 Click Generate")
+st.caption("**Instructions:**  (1) Upoad PDF files (2) Choose a system prompt and customize if needed (3) Choose a user prompt and customize if needed (4) Adust LLM Parameters as needed (5) Click Generate")
 
 # Create a Bedrock Runtime client
 @st.cache_resource
@@ -140,6 +140,11 @@ with st.sidebar:
     st.markdown("## LLM Parameters")
 
     with st.container():
+        selected_model = st.selectbox("**Model Name**", 
+            model_options,
+            format_func=models_shared.get_model_label
+        )
+
         MAX_TOKENS = st.slider("**Max Tokens** [Concise <---> Detailed]", min_value=0,
                                 max_value=4096, value=3072, step=8)
         TEMPERATURE = st.slider("**Temperature** [Factual <---> Creative]", min_value=0.0,
@@ -147,7 +152,7 @@ with st.sidebar:
         TOP_P = st.slider("**Top-P** [Focused <---> Diverse]", min_value=0.0,
                             max_value=1.0, value=0.5, step=0.01)
 
-col1, col2, col3 = st.columns([.40,.40,.20])
+col1, col2 = st.columns([.45,.55])
 
 with col1:
     # File uploader for PDFs
@@ -162,13 +167,6 @@ with col2:
         height=120,
         value=system_prompt,
         label_visibility="collapsed"
-    )
-
-with col3:
-    selected_model = st.radio("**Select a model:**", 
-        model_options,
-        format_func=models_shared.get_model_label,
-        horizontal=True
     )
 
 # Extract text from uploaded PDFs
