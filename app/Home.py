@@ -23,6 +23,6 @@ with col2:
     "List the most common positive and negative comments from a set of consumer product reviews and summarize the overall sentiment."
     ""
     
-    st.page_link("demos/Product_Assistant_Chat.py", icon="💬", label="**Product Assistant Chatbot**")
+    st.page_link("demos/Product_Assistant_chat.py", icon="💬", label="**Product Assistant Chatbot**")
     "Have a conversation with a Claude 3 chatbot."
     ""
